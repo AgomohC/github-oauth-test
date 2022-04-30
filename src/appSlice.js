@@ -13,9 +13,14 @@ import axios from "axios";
 //    return req;
 // });
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 export const appSlice = createSlice({
    name: "app",
-   initialState: {},
+   initialState: {
+      user: user ? user : null,
+      loading: false,
+   },
    reducers: {},
    extraReducers: {},
 });

@@ -1,13 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const Login = () => {
+const BtnContent = () => {
    return (
       <>
-         <section>
-            <h2>Welcome</h2>
-            <button>Login</button>
-         </section>
+         <img
+            src="https://img.icons8.com/windows/32/000000/github-squared.png"
+            alt="github icon"
+         />
+         Login with GitHub
       </>
+   );
+};
+
+const Login = () => {
+   const { loading } = useSelector((state) => state.app);
+
+   return (
+      <section id="login-section">
+         <article className="login">
+            <h1 className="welcome-text">Welcome</h1>
+            <button disabled={loading} className="login-btn">
+               {!loading ? <BtnContent /> : "Loading..."}
+            </button>
+         </article>
+      </section>
    );
 };
 
