@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
    return repo ? children : <Navigate to="/login" />;
 };
 
-const app = () => {
+const App = () => {
    return (
       <>
          <Routes>
@@ -27,4 +27,4 @@ const app = () => {
    );
 };
 
-export default app;
+export default App;
