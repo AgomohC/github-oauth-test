@@ -20,7 +20,7 @@ const Login = () => {
    const dispatch = useDispatch();
    const clientID = "171318aa25325d940e29";
 
-   const redirectUrl = "http://localhost:3000/login";
+   const redirectUrl = "https://github-oauth-test.vercel.app/login";
 
    useEffect(() => {
       const code =

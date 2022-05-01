@@ -4,8 +4,9 @@ import axios from "axios";
 export const loginUser = createAsyncThunk(
    "user/login",
    async (code, { rejectWithValue }) => {
+      // `http://localhost:8080/api/${code}`
       try {
-         const { data } = await axios.get(
+         const { data } = await axios(
             `https://rogue-stellar-pump.glitch.me/api/${code}`
          );
          console.log(data);

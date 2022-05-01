@@ -83,7 +83,7 @@ article {
 
 .btn-container {
    display: flex;
-   justify-content: start;
+   justify-content: flex-start;
    gap: 24px;
 }
 .btn-container > a {
