@@ -1,29 +1,60 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// axios.defaults.baseURL = "http://localhost:8080/api";
-// axios.interceptors.request.use(function (req) {
-//    const user = localStorage.getItem("user");
+export const loginUser = createAsyncThunk(
+   "user/login",
+   async (code, { rejectWithValue }) => {
+      try {
+         const { data } = await axios.get(`http://localhost:8080/api/${code}`);
+         console.log(data);
+         return data;
+      } catch (err) {
+         return rejectWithValue(err.response.data);
+      }
+   }
+);
+const repo = JSON.parse(localStorage.getItem("repo"));
 
-//    if (user) {
-//       const { token } = JSON.parse(localStorage.getItem("user"));
-//       req.headers.authorization = `Bearer ${token}`;
-//       return req;
-//    }
-//    return req;
-// });
-
-const user = JSON.parse(localStorage.getItem("user"));
-
+console.log(repo);
 export const appSlice = createSlice({
    name: "app",
    initialState: {
-      user: user ? user : null,
+      repo: repo ? repo.repos : null,
       loading: false,
+      error: false,
+      errorMessage: "",
    },
-   reducers: {},
-   extraReducers: {},
+   reducers: {
+      logOut: (state) => {
+         state.repo = null;
+         state.loading = false;
+         state.error = false;
+         state.errorMessage = "";
+         localStorage.removeItem("repo");
+      },
+   },
+   extraReducers: {
+      [loginUser.loading]: (state) => {
+         state.loading = true;
+         state.error = false;
+         state.repo = null;
+         state.errorMessage = "";
+      },
+      [loginUser.fulfilled]: (state, action) => {
+         localStorage.setItem("repo", JSON.stringify({ ...action.payload }));
+         state.loading = false;
+         state.error = false;
+         state.repo = action.payload.repos;
+         state.errorMessage = "";
+      },
+      [loginUser.rejected]: (state, action) => {
+         state.loading = false;
+         state.error = true;
+         state.repo = null;
+         state.errorMessage = action.payload.error;
+      },
+   },
 });
 
-export const {} = appSlice.actions;
+export const { logOut } = appSlice.actions;
 export default appSlice.reducer;

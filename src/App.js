@@ -5,8 +5,8 @@ import Home from "./Home";
 import Login from "./Login";
 
 const PrivateRoute = ({ children }) => {
-   const { user } = useSelector((state) => state.app);
-   return user ? children : <Navigate to="/login" />;
+   const { repo } = useSelector((state) => state.app);
+   return repo ? children : <Navigate to="/login" />;
 };
 
 const app = () => {
