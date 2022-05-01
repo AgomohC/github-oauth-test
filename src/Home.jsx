@@ -18,7 +18,7 @@ const Home = () => {
 
    return (
       <section id="home-section">
-         <button className="logout-btn" onClick={dispatch(logOut())}>
+         <button className="logout-btn" onClick={() => dispatch(logOut())}>
             Log Out
          </button>
          {repo.length !== 0 ? mapThroughItems(repo) : <NoRepo />}
