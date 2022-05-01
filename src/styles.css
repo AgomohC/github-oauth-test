@@ -103,3 +103,29 @@ article {
    font-size: 0.75rem;
    opacity: 0.85;
 }
+
+@keyframes loading {
+   0% {
+      transform: rotate(0deg);
+   }
+   25% {
+      transform: rotate(90deg);
+   }
+   50% {
+      transform: rotate(90deg);
+   }
+   75% {
+      transform: rotate(90deg);
+   }
+   100% {
+      transform: rotate(90deg);
+   }
+}
+.loading {
+   animation-name: loading;
+   animation-duration: 4s;
+   animation-fill-mode: backwards;
+   animation-iteration-count: infinite;
+   animation-direction: normal;
+   animation-timing-function: ease-in-out;
+}
