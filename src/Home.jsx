@@ -15,14 +15,14 @@ const NoRepo = () => {
 const Home = () => {
    const { repo } = useSelector((state) => state.app);
    const dispatch = useDispatch();
-
+   const shorterRepo = repo.slice(0, 20);
    return (
       <>
          <button className="logout-btn" onClick={() => dispatch(logOut())}>
             Log Out
          </button>
          <section id="home-section">
-            {repo.length !== 0 ? mapThroughItems(repo) : <NoRepo />}
+            {repo.length !== 0 ? mapThroughItems(shorterRepo) : <NoRepo />}
          </section>
       </>
    );
