@@ -49,11 +49,14 @@ const Login = () => {
                   {!loading ? (
                      <BtnContent />
                   ) : (
-                     <img
-                        alt="loading icon"
-                        src="https://img.icons8.com/ios-glyphs/30/000000/loading.png"
-                        className="loading"
-                     />
+                     <>
+                        <img
+                           alt="loading icon"
+                           src="https://img.icons8.com/ios-glyphs/30/000000/loading.png"
+                           className="loading"
+                        />
+                        Loading...
+                     </>
                   )}
                </a>
             </article>
