@@ -80,6 +80,10 @@ article {
 .margin-top {
    margin-top: 10px;
 }
+.no-repo {
+   margin-top: 40px;
+   margin-left: 40px;
+}
 
 .btn-container {
    display: flex;

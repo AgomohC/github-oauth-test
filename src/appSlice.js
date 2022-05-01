@@ -37,7 +37,7 @@ export const appSlice = createSlice({
       },
    },
    extraReducers: {
-      [loginUser.loading]: (state) => {
+      [loginUser.pending]: (state) => {
          state.loading = true;
          state.error = false;
          state.repo = null;
