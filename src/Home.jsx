@@ -17,12 +17,14 @@ const Home = () => {
    const dispatch = useDispatch();
 
    return (
-      <section id="home-section">
+      <>
          <button className="logout-btn" onClick={() => dispatch(logOut())}>
             Log Out
          </button>
-         {repo.length !== 0 ? mapThroughItems(repo) : <NoRepo />}
-      </section>
+         <section id="home-section">
+            {repo.length !== 0 ? mapThroughItems(repo) : <NoRepo />}
+         </section>
+      </>
    );
 };
 
